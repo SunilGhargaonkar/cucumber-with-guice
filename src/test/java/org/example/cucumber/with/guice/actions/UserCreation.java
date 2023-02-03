@@ -19,7 +19,6 @@ public class UserCreation {
     private final HttpContext httpContext;
     private final HttpClient<Response> httpClient;
     private final String endpoint;
-    private final String requestData;
 
 
     @Inject
@@ -28,7 +27,6 @@ public class UserCreation {
                         @Named("host") String host) {
         this.httpContext = httpContext;
         this.httpClient = httpClient;
-        this.requestData = Objects.requireNonNull(httpContext.getRequestData(), "requestData must not be null");
         this.endpoint = Objects.requireNonNull(prepareEndpoint(schema, host), "endpoint must not be null");
     }
 
@@ -48,7 +46,7 @@ public class UserCreation {
     public void execute() {
         final ObjectMapper objectMapper = new ObjectMapper();
 
-        final Response response = httpClient.post(endpoint, requestData);
+        final Response response = httpClient.post(endpoint, httpContext.getRequestData());
 
         try {
             final UserCreationResponseModel responseModel = objectMapper.readValue(

@@ -18,7 +18,6 @@
         <junit-jupiter.version>5.8.1</junit-jupiter.version>
         <junit-platform.version>1.8.2</junit-platform.version>
 
-        <maven-failsafe.version>3.0.0-M7</maven-failsafe.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <maven-assembly.version>3.4.2</maven-assembly.version>
         <maven.compiler.source>17</maven.compiler.source>
@@ -129,6 +128,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
                     <forceJavacCompilerUse>true</forceJavacCompilerUse>
                     <source>${maven.compiler.source}</source>
@@ -139,6 +139,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <forkCount>5</forkCount>
                     <excludes>
